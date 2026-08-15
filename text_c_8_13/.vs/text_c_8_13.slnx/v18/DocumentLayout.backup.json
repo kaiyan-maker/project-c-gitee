@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Aorta\\Desktop\\add\\drone-flight\\text_c_8_13\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{50ED1EF7-803D-4BE7-B227-45E02D1F2FC6}|text_c_8_13.vcxproj|C:\\Users\\Aorta\\Desktop\\add\\drone-flight\\text_c_8_13\\text.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{50ED1EF7-803D-4BE7-B227-45E02D1F2FC6}|text_c_8_13.vcxproj|solutionrelative:text.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "text.c",
+              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\add\\drone-flight\\text_c_8_13\\text.c",
+              "RelativeDocumentMoniker": "text.c",
+              "ToolTip": "C:\\Users\\Aorta\\Desktop\\add\\drone-flight\\text_c_8_13\\text.c",
+              "RelativeToolTip": "text.c",
+              "ViewState": "AgIAADYAAAAAAAAAAAA2wFUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-08-12T07:32:17.953Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

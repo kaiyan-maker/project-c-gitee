@@ -1,0 +1,12 @@
+﻿  text.c
+C:\Users\Aorta\Desktop\add\drone-flight\text_c_8_14\text.c(1,9): warning C4005: “UNICODE”: 宏重定义
+      C:\Users\Aorta\Desktop\add\drone-flight\text_c_8_14\text.c(1,9):
+      之前在命令行上声明的“UNICODE”
+  
+C:\Users\Aorta\Desktop\add\drone-flight\text_c_8_14\text.c(2,9): warning C4005: “_UNICODE”: 宏重定义
+      C:\Users\Aorta\Desktop\add\drone-flight\text_c_8_14\text.c(2,9):
+      之前在命令行上声明的“_UNICODE”
+  
+text.obj : error LNK2019: 无法解析的外部符号 __imp_AlphaBlend，函数 WndProc 中引用了该符号
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 无法解析的外部符号 main，函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中引用了该符号
+C:\Users\Aorta\Desktop\add\drone-flight\text_c_8_14\x64\Debug\text_c_8_14.exe : fatal error LNK1120: 2 个无法解析的外部命令
