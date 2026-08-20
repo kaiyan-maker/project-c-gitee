@@ -1,8 +1,0 @@
-﻿  text.c
-C:\Users\Aorta\Desktop\text\project_-c\text_c_8_18\text.c(290,3): warning C4013: “Sleep”未定义；假设外部返回 int
-C:\Users\Aorta\Desktop\text\project_-c\text_c_8_18\text.c(286,27): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\Aorta\Desktop\text\project_-c\text_c_8_18\text.c(300,5): error C2084: 函数“int main()”已有主体
-      C:\Users\Aorta\Desktop\text\project_-c\text_c_8_18\text.c(281,5):
-      参见“main”的前一个定义
-  
-C:\Users\Aorta\Desktop\text\project_-c\text_c_8_18\text.c(305,27): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
