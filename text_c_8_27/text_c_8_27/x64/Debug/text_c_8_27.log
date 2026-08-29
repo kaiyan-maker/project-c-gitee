@@ -1,3 +1,0 @@
-﻿  text.c
-C:\Users\Aorta\Desktop\text1\project_-c\text_c_8_27\text.c(32,14): warning C4047: “!=”:“int”与“char [2]”的间接级别不同
-  text_c_8_27.vcxproj -> C:\Users\Aorta\Desktop\text1\project_-c\text_c_8_27\x64\Debug\text_c_8_27.exe
