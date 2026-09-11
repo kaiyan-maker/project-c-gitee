@@ -1,0 +1,55 @@
+<view class="app">
+  <view class="title">猜数字</view>
+
+  <view class="card">
+    <view class="row">
+      <picker class="picker" mode="selector" range="{{diffs}}" range-key="name" value="{{diffIndex}}" bindchange="onDiffChange">
+        <view class="picker-view">{{diffs[diffIndex].name}}</view>
+      </picker>
+      <button class="btn btn-start" bindtap="startGame">开始</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="hint-text">{{hintText}}</view>
+    <input class="guess-input" type="number" value="{{inputVal}}" bindinput="onInput"
+           placeholder="输入数字" disabled="{{inputDisabled}}" />
+    <view class="row">
+      <button class="btn btn-main" bindtap="doGuess" disabled="{{guessDisabled}}">确定猜测</button>
+      <button class="btn btn-exit" bindtap="exitGame">退出</button>
+    </view>
+  </view>
+
+  <view class="card stats">
+    <view class="stat">
+      <view class="num">{{remainText}}</view>
+      <view class="label">剩余次数</view>
+    </view>
+    <view class="stat">
+      <view class="num">{{timeText}}</view>
+      <view class="label">已用时</view>
+    </view>
+    <view class="stat">
+      <view class="num">{{score}}</view>
+      <view class="label">本次得分</view>
+    </view>
+  </view>
+
+  <view class="card status {{statusClass}}">{{status}}</view>
+
+  <view class="card">
+    <view class="stats best">
+      <view class="stat">
+        <view class="num">{{best}}</view>
+        <view class="label">历史最高分</view>
+      </view>
+    </view>
+    <view class="history-title">--- 历史记录 ---</view>
+    <scroll-view class="history" scroll-y>
+      <view class="history-item" wx:for="{{history}}" wx:key="n">
+        第{{item.n}}次: {{item.v}}
+        <text class="{{item.cls}}">{{item.text}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

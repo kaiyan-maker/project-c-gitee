@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>猜数字小游戏</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(160deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    color: #fff;
+  }
+  .app {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.3);
+    padding: 6px 0;
+  }
+  .card {
+    background: rgba(255,255,255,.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 16px;
+    padding: 14px;
+  }
+  .row { display: flex; gap: 10px; }
+  .row.center { justify-content: center; }
+  select {
+    flex: 1;
+    background: rgba(255,255,255,.16);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 16px;
+    outline: none;
+    appearance: none;
+  }
+  button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  button:active { transform: scale(.96); }
+  .btn-start { background: linear-gradient(135deg, #11998e, #38ef7d); flex: 1; }
+  .btn-main { background: linear-gradient(135deg, #fc4a1a, #f7b733); flex: 1; }
+  .btn-exit { background: linear-gradient(135deg, #a71d31, #e03e3e); flex: .6; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .input-area { margin-top: 10px; }
+  .hint-text { font-size: 15px; color: #cde3ff; margin-bottom: 8px; }
+  .guess-input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(255,255,255,.16);
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  .guess-input:focus { border-color: #38ef7d; }
+  .stats { display: flex; justify-content: space-between; text-align: center; flex-wrap: wrap; gap: 8px; }
+  .stat { flex: 1; min-width: 100px; }
+  .stat .num { font-size: 22px; font-weight: 700; }
+  .stat .label { font-size: 12px; color: #b9d4ff; }
+  .status {
+    text-align: center;
+    min-height: 46px;
+    line-height: 1.6;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.12);
+    font-size: 16px;
+  }
+  .status.good { background: rgba(56,237,125,.25); }
+  .status.bad { background: rgba(224,62,62,.25); }
+  .history-title { font-size: 14px; color: #b9d4ff; margin-bottom: 8px; }
+  #history {
+    list-style: none;
+    max-height: 170px;
+    overflow-y: auto;
+    font-size: 15px;
+  }
+  #history li {
+    padding: 7px 10px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    background: rgba(255,255,255,.1);
+  }
+  #history li i { float: right; font-style: normal; }
+  .ok { color: #38ef7d; }
+  .up { color: #ffb347; }
+  .down { color: #7fb6ff; }
+  .result-tip { color: #ffe08a; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>猜数字</h1>
+  <div class="card row">
+    <select id="difficulty">
+      <option value="50,7">简单 (1-50, 7次)</option>
+      <option value="100,5" selected>普通 (1-100, 5次)</option>
+      <option value="200,4">困难 (1-200, 4次)</option>
+    </select>
+    <button class="btn-start" onclick="startGame()">开始</button>
+  </div>
+
+  <div class="card">
+    <div class="hint-text" id="hintText">请输入你猜的数字 (1-100):</div>
+    <div class="row">
+      <input class="guess-input" id="guessInput" type="number" inputmode="numeric" placeholder="输入数字" disabled>
+    </div>
+    <div class="row">
+      <button class="btn-main" id="guessBtn" onclick="doGuess()" disabled>确定猜测</button>
+      <button class="btn-exit" onclick="exitGame()">退出</button>
+    </div>
+  </div>
+
+  <div class="card stats">
+    <div class="stat"><div class="num" id="remainNum">-</div><div class="label">剩余次数</div></div>
+    <div class="stat"><div class="num" id="timeNum">0.0s</div><div class="label">已用时</div></div>
+    <div class="stat"><div class="num" id="scoreNum">0</div><div class="label">本次得分</div></div>
+  </div>
+
+  <div class="card status" id="status"></div>
+
+  <div class="card">
+    <div class="stats" style="margin-bottom:6px;">
+      <div class="stat"><div class="num" id="bestNum">0</div><div class="label">历史最高分</div></div>
+    </div>
+    <div class="history-title">--- 历史记录 ---</div>
+    <ul id="history"></ul>
+  </div>
+</div>
+
+<script>
+  var secret = 0, maxVal = 100, maxGuess = 5, count = 0;
+  var running = false, hintShown = false, low = 1, high = 100;
+  var score = 0, best = 0, startT = 0, timerId = 0;
+  var win = false;
+
+  best = parseInt(localStorage.getItem("guess_best") || "0", 10);
+  updateBest();
+
+  function $(id) { return document.getElementById(id); }
+
+  function updateBest() { $("bestNum").textContent = best; }
+
+  function startGame() {
+    var opt = $("difficulty").value.split(",");
+    maxVal = parseInt(opt[0], 10);
+    maxGuess = parseInt(opt[1], 10);
+    secret = Math.floor(Math.random() * maxVal) + 1;
+    count = 0; score = 0; running = true; win = false; hintShown = false;
+    low = 1; high = maxVal;
+    $("hintText").textContent = "请输入你猜的数字 (1-" + maxVal + "):";
+    $("guessInput").disabled = false;
+    $("guessBtn").disabled = false;
+    $("guessInput").value = "";
+    $("history").innerHTML = "";
+    setStatus("游戏开始! 请在 " + maxGuess + " 次内猜出数字", "", false);
+    startT = Date.now();
+    clearInterval(timerId);
+    timerId = setInterval(updateTime, 200);
+    updateRemain(); updateTime(); updateScore();
+    $("guessInput").focus();
+  }
+
+  function updateRemain() {
+    var r = maxGuess - count;
+    if (r < 0) r = 0;
+    $("remainNum").textContent = r > 0 ? r : "0";
+  }
+
+  function updateTime() {
+    if (!running) return;
+    var s = ((Date.now() - startT) / 1000).toFixed(1);
+    $("timeNum").textContent = s + "s";
+  }
+
+  function updateScore() { $("scoreNum").textContent = score; }
+
+  function setStatus(msg, cls, isBad) {
+    var el = $("status");
+    el.innerHTML = msg;
+    el.className = "status";
+    if (cls === "good") el.className += " good";
+    else if (cls === "bad") el.className += " bad";
+  }
+
+  function addHistory(n, v, text, cls) {
+    var li = document.createElement("li");
+    li.innerHTML = "第" + n + "次: " + v + " <i class='" + cls + "'>" + text + "</i>";
+    $("history").appendChild(li);
+    $("history").scrollTop = $("history").scrollHeight;
+  }
+
+  function doGuess() {
+    if (!running) return;
+    var v = parseInt($("guessInput").value, 10);
+    if (isNaN(v) || v < 1 || v > maxVal) {
+      setStatus("请输入 1-" + maxVal + " 之间的数字!", "", true);
+      return;
+    }
+    count++;
+    var remain = maxGuess - count;
+    $("guessInput").value = "";
+
+    if (v > secret) {
+      if (v < high) high = v - 1;
+      setStatus("猜大了! 还剩 " + remain + " 次机会", "up");
+      addHistory(count, v, "猜大了", "up");
+    } else if (v < secret) {
+      if (v > low) low = v + 1;
+      setStatus("猜小了! 还剩 " + remain + " 次机会", "down");
+      addHistory(count, v, "猜小了", "down");
+    } else {
+      win = true;
+      running = false;
+      clearInterval(timerId);
+      var secs = (Date.now() - startT) / 1000;
+      score = (remain + 1) * 100 - Math.floor(secs);
+      if (score < 0) score = 0;
+      var isRecord = false;
+      if (score > best) { best = score; localStorage.setItem("guess_best", String(best)); updateBest(); isRecord = true; }
+      setStatus("恭喜你, 猜对了! 用时 " + secs.toFixed(1) + " 秒<br>得分 " + score + (isRecord ? "<br><b>新纪录!</b>" : ""), "good");
+      addHistory(count, v, "猜对了", "ok");
+      $("guessBtn").disabled = true;
+      $("guessInput").disabled = true;
+      updateScore();
+      return;
+    }
+
+    if (maxGuess - count === 2 && !hintShown) {
+      hintShown = true;
+      setStatus("提示: 答案在 " + low + " - " + high + " 之间, 还有 2 次机会", "", false);
+    }
+
+    if (count >= maxGuess) {
+      running = false;
+      clearInterval(timerId);
+      setStatus(maxGuess + "次都没猜对!<br>正确答案是: <b>" + secret + "</b>", "bad");
+      $("guessBtn").disabled = true;
+      $("guessInput").disabled = true;
+      updateRemain();
+      return;
+    }
+
+    updateRemain(); updateScore();
+    $("guessInput").focus();
+  }
+
+  function exitGame() {
+    if (!running && !confirm("确定要退出吗?")) return;
+    running = false;
+    clearInterval(timerId);
+    count = 0;
+    $("guessInput").disabled = true;
+    $("guessBtn").disabled = true;
+    $("remainNum").textContent = "-";
+    $("timeNum").textContent = "0.0s";
+    $("history").innerHTML = "";
+    setStatus("已退出, 选择难度后点开始", "", false);
+  }
+
+  $("guessInput").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") doGuess();
+  });
+</script>
+</body>
+</html>

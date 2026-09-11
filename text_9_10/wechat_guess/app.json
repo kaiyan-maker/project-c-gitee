@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1e3c72",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "猜数字小游戏",
+    "backgroundColor": "#2a5298",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
