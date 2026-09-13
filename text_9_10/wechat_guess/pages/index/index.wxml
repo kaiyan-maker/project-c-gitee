@@ -1,13 +1,54 @@
-<view class="app">
+<view class="app" style="background: linear-gradient(160deg, {{theme.bgTop}} 0%, {{theme.bgBottom}} 100%);">
   <view class="title">猜数字</view>
 
   <view class="card">
-    <view class="row">
+    <view class="mode-row">
+      <view class="mode-tab {{mode === index ? 'active' : ''}}" wx:for="{{MODE_NAMES}}" wx:key="*this"
+            data-mode="{{index}}" bindtap="onModeTap">{{item}}</view>
+    </view>
+
+    <view class="row" wx:if="{{mode === 'classic'}}">
       <picker class="picker" mode="selector" range="{{diffs}}" range-key="name" value="{{diffIndex}}" bindchange="onDiffChange">
         <view class="picker-view">{{diffs[diffIndex].name}}</view>
       </picker>
       <button class="btn btn-start" bindtap="startGame">开始</button>
     </view>
+    
+    <view class="row" wx:if="{{mode === 'level'}}">
+      <view class="mode-info">当前: 第{{level}}关 &nbsp;|&nbsp; 最佳: {{levelBest}}关</view>
+      <button class="btn btn-start" bindtap="startGame">开始</button>
+    </view>
+
+    <view class="row" wx:if="{{mode === 'time'}}">
+      <view class="mode-info">60秒猜对越多越好 | 最佳: {{timeBest}}分</view>
+      <button class="btn btn-start" bindtap="startGame">开始</button>
+    </view>
+
+    <view class="row" wx:if="{{mode === 'vs'}}">
+      <view class="mode-info">与 AI 轮流猜 1-100 | 你 {{vsWins}} 胜</view>
+      <button class="btn btn-start" bindtap="startGame">开始</button>
+    </view>
+
+    <view class="row" wx:if="{{mode === 'daily'}}">
+      <view class="mode-info">今日固定数字 1-100, 5次机会 | 最佳: {{dailyBestText}}</view>
+      <button class="btn btn-start" bindtap="startDaily">开始</button>
+    </view>
+  </view>
+
+  <view class="card custom-form" wx:if="{{mode === 'classic' && useCustom}}">
+    <view class="custom-title">自定义难度</view>
+    <view class="row">
+      <view class="custom-field">
+        <view class="custom-label">数字范围 (5-5000)</view>
+        <input class="custom-input" type="number" value="{{customMax}}" bindinput="onCustomMax" placeholder="最大数" />
+      </view>
+      <view class="custom-field">
+        <view class="custom-label">猜测次数 (2-20)</view>
+        <input class="custom-input" type="number" value="{{customGuess}}" bindinput="onCustomGuess" placeholder="次数" />
+      </view>
+    </view>
+    <button class="btn btn-apply" bindtap="applyCustom">应用自定义</button>
+    <view class="custom-tip">提示: 设置后将记住参数，可用于挑战更极限的玩法</view>
   </view>
 
   <view class="card">
@@ -20,6 +61,16 @@
     </view>
   </view>
 
+  <view class="card prop-card" wx:if="{{running}}">
+    <view class="prop-row">
+      <view class="prop {{propHint > 0 ? 'on' : 'off'}}" bindtap="useHint">提示 {{propHint}}</view>
+      <view class="prop {{propShield > 0 ? 'on' : 'off'}}" bindtap="useShield">免死 {{propShield}}</view>
+      <view class="prop {{propTime > 0 ? 'on' : 'off'}}" bindtap="useTime">加时 {{propTime}}</view>
+      <view class="prop {{propDouble > 0 ? 'on' : 'off'}}" bindtap="useDouble">翻倍 {{propDouble}}</view>
+    </view>
+    <view class="prop-tip" wx:if="{{shieldActive}}">免死金牌已激活: 下一次猜错不扣次数</view>
+  </view>
+
   <view class="card stats">
     <view class="stat">
       <view class="num">{{remainText}}</view>
@@ -27,11 +78,19 @@
     </view>
     <view class="stat">
       <view class="num">{{timeText}}</view>
-      <view class="label">已用时</view>
+      <view class="label">{{mode === 'time' ? '剩余时间' : '已用时间'}}</view>
     </view>
     <view class="stat">
       <view class="num">{{score}}</view>
       <view class="label">本次得分</view>
+    </view>
+    <view class="stat" wx:if="{{mode === 'time'}}">
+      <view class="num">{{counts}}</view>
+      <view class="label">猜对题数</view>
+    </view>
+    <view class="stat" wx:if="{{mode === 'level'}}">
+      <view class="num">{{level}}</view>
+      <view class="label">当前关卡</view>
     </view>
   </view>
 
@@ -40,16 +99,155 @@
   <view class="card">
     <view class="stats best">
       <view class="stat">
-        <view class="num">{{best}}</view>
-        <view class="label">历史最高分</view>
+        <view class="num">{{bestText}}</view>
+        <view class="label">最佳纪录</view>
       </view>
     </view>
-    <view class="history-title">--- 历史记录 ---</view>
+    <view class="history-title">--- 本局历史 ---</view>
     <scroll-view class="history" scroll-y>
       <view class="history-item" wx:for="{{history}}" wx:key="n">
         第{{item.n}}次: {{item.v}}
         <text class="{{item.cls}}">{{item.text}}</text>
       </view>
+      <view class="empty" wx:if="{{!history.length}}">暂无猜测记录</view>
     </scroll-view>
+  </view>
+
+  <view class="foot">
+    <button class="btn btn-foot" data-type="stats" bindtap="openOverlay">统计</button>
+    <button class="btn btn-foot" data-type="rank" bindtap="openOverlay">排行</button>
+    <button class="btn btn-foot" data-type="achv" bindtap="openOverlay">成就</button>
+    <button class="btn btn-foot" data-type="log" bindtap="openOverlay">记录</button>
+    <button class="btn btn-foot" data-type="poster" bindtap="openOverlay">海报</button>
+    <button class="btn btn-foot" data-type="setting" bindtap="openOverlay">设置</button>
+    <button class="btn btn-foot" open-type="share">分享</button>
+  </view>
+
+  <view class="mask" wx:if="{{overlay}}" bindtap="closeOverlay"></view>
+  <view class="sheet" wx:if="{{overlay}}">
+    <view class="sheet-title">
+      {{overlay === 'stats' ? '统计面板' : overlay === 'rank' ? '本地排行榜' : overlay === 'achv' ? '成就徽章' : overlay === 'log' ? '对局记录' : overlay === 'guide' ? '新手引导' : overlay === 'poster' ? '分享海报' : '设置'}}
+    </view>
+
+    <block wx:if="{{overlay === 'stats'}}">
+      <view class="stats">
+        <view class="stat">
+          <view class="num">{{stats.total}}</view>
+          <view class="label">总局数</view>
+        </view>
+        <view class="stat">
+          <view class="num">{{stats.wins}}</view>
+          <view class="label">胜利局数</view>
+        </view>
+        <view class="stat">
+          <view class="num">{{stats.winRate}}</view>
+          <view class="label">胜率</view>
+        </view>
+      </view>
+      <view class="stats">
+        <view class="stat">
+          <view class="num">{{stats.avgTime}}</view>
+          <view class="label">平均用时(胜局)</view>
+        </view>
+        <view class="stat">
+          <view class="num">{{stats.avgGuess}}</view>
+          <view class="label">平均猜测(胜局)</view>
+        </view>
+        <view class="stat">
+          <view class="num">{{stats.bestLevel}}</view>
+          <view class="label">闯关最高</view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{overlay === 'rank'}}">
+      <scroll-view class="rank-scroll" scroll-y>
+        <view class="rank-head">
+          <view class="rank-c-rank">名次</view>
+          <view class="rank-c-score">分数</view>
+          <view class="rank-c-mode">模式</view>
+          <view class="rank-c-time">用时</view>
+          <view class="rank-c-date">日期</view>
+        </view>
+        <view class="rank-item" wx:for="{{rankList}}" wx:key="id">
+          <view class="rank-c-rank rank-no {{index < 3 ? 'top' : ''}}">{{index + 1}}</view>
+          <view class="rank-c-score">{{item.score}}</view>
+          <view class="rank-c-mode rank-diff">{{item.mode}}{{item.diff ? '·' + item.diff : ''}}</view>
+          <view class="rank-c-time">{{item.time}}</view>
+          <view class="rank-c-date">{{item.date}}</view>
+        </view>
+        <view class="empty" wx:if="{{!rankList.length}}">暂无纪录, 快去创造高分吧!</view>
+      </scroll-view>
+      <button class="btn btn-danger" bindtap="clearRank">清空排行榜</button>
+    </block>
+
+    <block wx:if="{{overlay === 'achv'}}">
+      <view class="achv-grid">
+        <view class="achv-item {{item.unlocked ? 'unlocked' : 'locked'}}" wx:for="{{achvList}}" wx:key="id">
+          <view class="achv-icon">{{item.icon}}</view>
+          <view class="achv-name">{{item.name}}</view>
+          <view class="achv-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{overlay === 'log'}}">
+      <scroll-view class="log-scroll" scroll-y>
+        <view class="log-item" wx:for="{{logList}}" wx:key="id">
+          <view class="log-line">
+            <text>{{item.outcome}} {{item.mode}}{{item.diff ? ' · ' + item.diff : ''}} {{item.score}}分</text>
+            {{item.date}} · {{item.time}}
+          </view>
+          <view class="log-sub">猜测 {{item.used}} 次</view>
+        </view>
+        <view class="empty" wx:if="{{!logList.length}}">暂无对局记录</view>
+      </scroll-view>
+      <button class="btn btn-danger" bindtap="clearLog">清空记录</button>
+    </block>
+
+    <block wx:if="{{overlay === 'guide'}}">
+      <view class="guide-step"><view class="guide-n">1</view>选择模式: 经典、闯关、竞速、对战、每日挑战</view>
+      <view class="guide-step"><view class="guide-n">2</view>猜数字: 大了/小了会有提示, 次数内猜中即胜</view>
+      <view class="guide-step"><view class="guide-n">3</view>开局自带道具: 提示、免死、加时、翻倍</view>
+      <view class="guide-step"><view class="guide-n">4</view>达成成就解锁徽章, 高分可进排行榜并生成海报</view>
+      <button class="btn btn-start full" bindtap="finishGuide">开始游戏</button>
+    </block>
+
+    <block wx:if="{{overlay === 'poster'}}">
+      <view class="poster-img" wx:if="{{posterSrc}}">
+        <image class="poster-photo" mode="widthFix" src="{{posterSrc}}"></image>
+      </view>
+      <view wx:else class="poster-wrap">
+        <canvas class="poster-canvas" canvas-id="posterCanvas" id="posterCanvas"
+                style="width:600px;height:900px;"></canvas>
+      </view>
+      <button class="btn btn-start full" bindtap="savePoster">保存到相册</button>
+    </block>
+
+    <block wx:if="{{overlay === 'setting'}}">
+      <view class="set-title">我的昵称</view>
+      <view class="set-row">
+        <input class="nick-input" value="{{nick}}" bindinput="onNickInput" placeholder="输入昵称(排行榜显示)" maxlength="8" />
+        <button class="btn btn-small" bindtap="saveNick">保存</button>
+      </view>
+      <view class="set-title">主题皮肤</view>
+      <view class="theme-row">
+        <view class="theme-item {{themeIndex === index ? 'active' : ''}}" wx:for="{{themes}}" wx:for-item="th" wx:key="id"
+              data-idx="{{index}}" bindtap="onThemeTap">
+          <view class="theme-swatch" style="background: linear-gradient(135deg, {{th.bgTop}}, {{th.bgBottom}});"></view>
+          <view class="theme-name">{{th.name}}</view>
+        </view>
+      </view>
+      <view class="set-title">音效</view>
+      <view class="set-row">
+        <view class="set-desc">猜对/猜错提示音</view>
+        <switch checked="{{soundOn}}" bindchange="onSoundChange" color="#11998e" />
+      </view>
+      <view class="set-title">震动</view>
+      <view class="set-row">
+        <view class="set-desc">猜测结果震动反馈</view>
+        <switch checked="{{vibrateOn}}" bindchange="onVibrateChange" color="#11998e" />
+      </view>
+    </block>
   </view>
 </view>
