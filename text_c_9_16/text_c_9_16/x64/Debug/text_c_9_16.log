@@ -1,0 +1,6 @@
+﻿  text1.c
+  text2.c
+  正在生成代码...
+C:\Users\Aorta\Desktop\text1\project_-c\text_c_9_16\text2.c(15,2): warning C4098: “int_cmp”:“void”函数返回值
+C:\Users\Aorta\Desktop\text1\project_-c\text_c_9_16\text2.c(30,38): warning C4133: “函数”: 从“void (__cdecl *)(const void *,const void *)”到“_CoreCrtNonSecureSearchSortCompareFunction”的类型不兼容
+  text_c_9_16.vcxproj -> C:\Users\Aorta\Desktop\text1\project_-c\text_c_9_16\x64\Debug\text_c_9_16.exe
