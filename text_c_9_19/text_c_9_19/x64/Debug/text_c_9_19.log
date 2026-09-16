@@ -1,0 +1,10 @@
+﻿  text.c
+  text1.c
+  text2.c
+  正在生成代码...
+C:\Users\Aorta\Desktop\text1\project_-c\text_c_9_19\text2.c(37,1): warning C4715: “Frb”: 不是所有的控件路径都返回值
+C:\Users\Aorta\Desktop\text1\project_-c\text_c_9_19\text.c(71,1): warning C4715: “bottor_find”: 不是所有的控件路径都返回值
+text1.obj : error LNK2005: main 已经在 text.obj 中定义
+text2.obj : error LNK2005: Frb 已经在 text1.obj 中定义
+text2.obj : error LNK2005: main 已经在 text.obj 中定义
+C:\Users\Aorta\Desktop\text1\project_-c\text_c_9_19\x64\Debug\text_c_9_19.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
