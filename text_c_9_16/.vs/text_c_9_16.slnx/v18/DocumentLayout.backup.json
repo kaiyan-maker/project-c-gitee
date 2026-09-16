@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E5795B19-2EC9-4CD8-99D5-E7ED3111F032}|text_c_9_16.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E5795B19-2EC9-4CD8-99D5-E7ED3111F032}|text_c_9_16.vcxproj|solutionrelative:text2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E5795B19-2EC9-4CD8-99D5-E7ED3111F032}|text_c_9_16.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E5795B19-2EC9-4CD8-99D5-E7ED3111F032}|text_c_9_16.vcxproj|solutionrelative:text.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5795B19-2EC9-4CD8-99D5-E7ED3111F032}|text_c_9_16.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E5795B19-2EC9-4CD8-99D5-E7ED3111F032}|text_c_9_16.vcxproj|solutionrelative:text2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5795B19-2EC9-4CD8-99D5-E7ED3111F032}|text_c_9_16.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text1.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -22,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 288,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "text2.c",
               "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text2.c",
               "RelativeDocumentMoniker": "text2.c",
               "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text2.c",
               "RelativeToolTip": "text2.c",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2026-09-14T03:01:11.286Z",
               "EditorCaption": ""
@@ -45,20 +45,20 @@
               "RelativeDocumentMoniker": "text1.c",
               "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text1.c",
               "RelativeToolTip": "text1.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2026-09-14T02:42:30.216Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "text.c",
               "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text.c",
               "RelativeDocumentMoniker": "text.c",
               "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_16\\text.c",
               "RelativeToolTip": "text.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2026-09-14T02:41:58.646Z",
               "EditorCaption": ""
