@@ -1,0 +1,115 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\text.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|solutionrelative:text.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\Contact.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|solutionrelative:Contact.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\SeqList.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|solutionrelative:SeqList.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\Contact.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|solutionrelative:Contact.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\SeqList.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4849E43C-FA65-4FDC-9441-51735A0665F0}|text_c_9_20.vcxproj|solutionrelative:SeqList.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 288,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "text.c",
+              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\text.c",
+              "RelativeDocumentMoniker": "text.c",
+              "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\text.c",
+              "RelativeToolTip": "text.c",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAEsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-09-19T05:30:39.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SeqList.h",
+              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\SeqList.h",
+              "RelativeDocumentMoniker": "SeqList.h",
+              "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\SeqList.h",
+              "RelativeToolTip": "SeqList.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-09-19T03:33:00.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SeqList.c",
+              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\SeqList.c",
+              "RelativeDocumentMoniker": "SeqList.c",
+              "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\SeqList.c",
+              "RelativeToolTip": "SeqList.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-09-19T03:32:48.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Contact.c",
+              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\Contact.c",
+              "RelativeDocumentMoniker": "Contact.c",
+              "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\Contact.c",
+              "RelativeToolTip": "Contact.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-09-18T02:39:23.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Contact.h",
+              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\Contact.h",
+              "RelativeDocumentMoniker": "Contact.h",
+              "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_9_20\\Contact.h",
+              "RelativeToolTip": "Contact.h",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-09-18T02:39:07.633Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1695,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
