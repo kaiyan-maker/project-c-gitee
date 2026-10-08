@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "text_c_10_6\\x64\\Debug\\list.obj",
+            "outputs": [
+                "text_c_10_6\\x64\\Debug\\list.h.obj.dt.module.json",
+                "text_c_10_6\\x64\\Debug\\list.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
