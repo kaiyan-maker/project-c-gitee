@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_10_7\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0A2246BB-F9AB-4F5A-853D-B91C09AA8F72}|text_c_10_7.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_10_7\\text4.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0A2246BB-F9AB-4F5A-853D-B91C09AA8F72}|text_c_10_7.vcxproj|solutionrelative:text4.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{0A2246BB-F9AB-4F5A-853D-B91C09AA8F72}|text_c_10_7.vcxproj|C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_10_7\\text5.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0A2246BB-F9AB-4F5A-853D-B91C09AA8F72}|text_c_10_7.vcxproj|solutionrelative:text5.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "text4.c",
-              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_10_7\\text4.c",
-              "RelativeDocumentMoniker": "text4.c",
-              "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_10_7\\text4.c",
-              "RelativeToolTip": "text4.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAUAAAAAAAAAA==",
+              "Title": "text5.c",
+              "DocumentMoniker": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_10_7\\text5.c",
+              "RelativeDocumentMoniker": "text5.c",
+              "ToolTip": "C:\\Users\\Aorta\\Desktop\\text1\\project_-c\\text_c_10_7\\text5.c",
+              "RelativeToolTip": "text5.c",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-10-08T05:18:44.505Z",
+              "WhenOpened": "2026-10-08T12:42:19.759Z",
               "EditorCaption": ""
             }
           ]
